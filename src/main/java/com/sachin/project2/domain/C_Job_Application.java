@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class C_Job_Application extends BaseDomain implements Serializable {
 	@Id
 	private int jobApp_Id;
-	private String jobApp_email;
+	private String login_name;
 	private int job_id;
 	private Date applied_date;
 	private Character jobApp_status;
@@ -26,12 +26,7 @@ public class C_Job_Application extends BaseDomain implements Serializable {
 	public void setJobApp_Id(int jobApp_Id) {
 		this.jobApp_Id = jobApp_Id;
 	}
-	public String getJobApp_email() {
-		return jobApp_email;
-	}
-	public void setJobApp_email(String jobApp_email) {
-		this.jobApp_email = jobApp_email;
-	}
+	
 	public int getJob_id() {
 		return job_id;
 	}
@@ -55,6 +50,12 @@ public class C_Job_Application extends BaseDomain implements Serializable {
 	}
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+	public String getLogin_name() {
+		return login_name;
+	}
+	public void setLogin_name(String login_name) {
+		this.login_name = login_name;
 	}
 	
 }

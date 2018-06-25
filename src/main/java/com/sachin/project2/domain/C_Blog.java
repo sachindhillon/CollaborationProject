@@ -10,6 +10,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Component("c_blog")
 @Entity
 @Table
@@ -17,8 +19,9 @@ public class C_Blog extends BaseDomain implements Serializable {
 	@Id
 	private int blog_id;
 	private String blog_title;
-	private String emailID;
-	private Clob blog_description;
+	private String login_name;
+	private String blog_description;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy")
 	private Date blog_created_date;
 	private Character blog_status;
 	private Character blog_remarks;
@@ -36,16 +39,11 @@ public class C_Blog extends BaseDomain implements Serializable {
 	public void setBlog_title(String blog_title) {
 		this.blog_title = blog_title;
 	}
-	public String getEmailID() {
-		return emailID;
-	}
-	public void setEmailID(String emailID) {
-		this.emailID = emailID;
-	}
-	public Clob getBlog_description() {
+	
+	public String getBlog_description() {
 		return blog_description;
 	}
-	public void setBlog_description(Clob blog_description) {
+	public void setBlog_description(String blog_description) {
 		this.blog_description = blog_description;
 	}
 	public Date getBlog_created_date() {
@@ -77,6 +75,12 @@ public class C_Blog extends BaseDomain implements Serializable {
 	}
 	public void setBlog_unlikes(int blog_unlikes) {
 		this.blog_unlikes = blog_unlikes;
+	}
+	public String getLogin_name() {
+		return login_name;
+	}
+	public void setLogin_name(String login_name) {
+		this.login_name = login_name;
 	}
 	
 

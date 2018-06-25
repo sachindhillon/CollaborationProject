@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class C_User extends BaseDomain implements Serializable{
 
 	@Id
+	private  String login_name;
 	private  String user_email;
 	private  String user_password;
 	private  String username;
@@ -21,7 +22,12 @@ public class C_User extends BaseDomain implements Serializable{
 	private  String details;
 	private Character role;
 	private Character status;
-	private  String reason;
+	public String getLogin_name() {
+		return login_name;
+	}
+	public void setLogin_name(String login_name) {
+		this.login_name = login_name;
+	}
 	public String getUser_email() {
 		return user_email;
 	}
@@ -64,11 +70,10 @@ public class C_User extends BaseDomain implements Serializable{
 	public void setStatus(Character status) {
 		this.status = status;
 	}
-	public String getReason() {
-		return reason;
-	}
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
+	
+	
+	
+
+
 
 }

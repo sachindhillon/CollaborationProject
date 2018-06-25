@@ -21,7 +21,11 @@ public class C_Job extends BaseDomain implements Serializable {
 	private String job_qualification;
 	private int job_salary;
 	private Character job_status;
+	private String company_name;
 	private int no_of_openings;
+	private String skills_required;
+	private String location;
+	private String contact;
 	private Date job_posted_date;
 	public int getJob_id() {
 		return job_id;
@@ -70,6 +74,30 @@ public class C_Job extends BaseDomain implements Serializable {
 	}
 	public void setJob_posted_date(Date job_posted_date) {
 		this.job_posted_date = job_posted_date;
+	}
+	public String getCompany_name() {
+		return company_name;
+	}
+	public void setCompany_name(String company_name) {
+		this.company_name = company_name;
+	}
+	public String getSkills_required() {
+		return skills_required;
+	}
+	public void setSkills_required(String skills_required) {
+		this.skills_required = skills_required;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 

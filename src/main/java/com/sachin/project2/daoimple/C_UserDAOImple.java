@@ -21,6 +21,8 @@ public class C_UserDAOImple implements C_UserDAO{
 	
 	@Autowired
 	private C_User c_user;
+	
+	//create a new user
 	public boolean save(C_User c_user) {
 		
 		try {
@@ -38,6 +40,7 @@ public class C_UserDAOImple implements C_UserDAO{
 		}
 	}
 
+	//update a user
 	public boolean update(C_User c_user) {
 		try {
 			sessionFactory.getCurrentSession().update(c_user);
@@ -49,10 +52,11 @@ public class C_UserDAOImple implements C_UserDAO{
 		}
 	}
 
-	public boolean delete(String user_email) {
+	//delete a user
+	public boolean delete(String login_name) {
 		try {	
 						// before delete, first check whether the record
-						C_User c_user = getUser(user_email);
+						C_User c_user = getUser(login_name);
 						//existing or not
 						//if the record does not exist, simply return false;
 						if(c_user==null)
@@ -60,7 +64,8 @@ public class C_UserDAOImple implements C_UserDAO{
 							return false;
 						}
 						//if the record exist, the delete
-			
+						//method return true if deleted
+						//else false
 			sessionFactory.getCurrentSession().delete(c_user);
 			return true;
 		} catch (HibernateException e) {
@@ -69,20 +74,30 @@ public class C_UserDAOImple implements C_UserDAO{
 		}
 	}
 
-	public C_User getUser(String user_email) {
-		return sessionFactory.getCurrentSession().get(C_User.class, user_email);
+	// to get a particular user based on email id
+	public C_User getUser(String login_name) {
+		return sessionFactory.getCurrentSession().get(C_User.class, login_name);
 	}
 
+	// get list of all users
 	public List<C_User> userList() {
 		return sessionFactory.getCurrentSession().createQuery("from C_User").list();
 	}
 
+	// to validate user if email id and password are right
+	//return user if credentials are right
+	//else return null
 	public C_User validateUser(String user_email, String user_password) {
 		C_User c_user;
 		c_user = (C_User) sessionFactory.getCurrentSession().createCriteria(C_User.class)
 				.add(Restrictions.eq("user_email", user_email))
 				.add(Restrictions.eq("user_password", user_password)).uniqueResult();
 		return c_user;
+	}
+
+	public C_User get(String login_name) {
+		
+		return sessionFactory.getCurrentSession().get(C_User.class,login_name);
 	}
 
 }

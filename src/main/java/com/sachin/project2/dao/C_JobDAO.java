@@ -63,8 +63,8 @@ public interface C_JobDAO {
 		public  List<C_Job_Application> list(int jobID,char status);
 		
 		
-		public  boolean isJobAlreadyApplied(String emailID, int jobID);
+		public  C_Job_Application get(String login_name, int jobID);
 		
-		public List<C_Job_Application> jobApplicationList(String email);
+		public List<C_Job_Application> jobApplicationList(String login_name);
 
 }

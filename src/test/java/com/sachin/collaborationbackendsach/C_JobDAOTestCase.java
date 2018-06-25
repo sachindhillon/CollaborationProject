@@ -116,7 +116,7 @@ public class C_JobDAOTestCase {
 	@Test
 	public void applyForAJobSuccessTestCase()
 	{
-		jobApplication.setJobApp_email("sac@gmail.com");
+		jobApplication.setLogin_name("sac@gmail.com");
 		jobApplication.setJob_id(102);
 		Assert.assertEquals(true ,c_jobDAO.save(jobApplication));
 	}
@@ -124,18 +124,18 @@ public class C_JobDAOTestCase {
 	@Test
 	public void applyForAJobFailureTestCase()
 	{
-		jobApplication.setJobApp_email("jaya@123");
+		jobApplication.setLogin_name("jaya@123");
 		jobApplication.setJobApp_Id(101);
 		Assert.assertEquals(false ,c_jobDAO.save(jobApplication));
 	}
 	
 	@Test public void isJobAlreadyAppliedSuccessTestCase()
 	{
-		Assert.assertEquals(true ,c_jobDAO.isJobAlreadyApplied("sachin@gmail.com", 102));
+		Assert.assertEquals(true ,c_jobDAO.get("sachin@gmail.com", 102));
 	}
 	
 	@Test public void isJobAlreadyAppliedFailureTestCase()
 	{
-		Assert.assertEquals(false ,c_jobDAO.isJobAlreadyApplied("koffi@gmail.com", 102));
+		Assert.assertEquals(false ,c_jobDAO.get("koffi@gmail.com", 102));
 	}
 }
