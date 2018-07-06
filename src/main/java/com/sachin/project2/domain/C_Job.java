@@ -10,6 +10,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Component("c_job")
 @Entity
 @Table
@@ -26,6 +28,7 @@ public class C_Job extends BaseDomain implements Serializable {
 	private String skills_required;
 	private String location;
 	private String contact;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy")
 	private Date job_posted_date;
 	public int getJob_id() {
 		return job_id;

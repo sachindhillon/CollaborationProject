@@ -9,6 +9,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Component("c_job_application")
 @Entity
 @Table
@@ -16,7 +18,10 @@ public class C_Job_Application extends BaseDomain implements Serializable {
 	@Id
 	private int jobApp_Id;
 	private String login_name;
+	private String jobapp_title;
+	private String emailid;
 	private int job_id;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy")
 	private Date applied_date;
 	private Character jobApp_status;
 	private String reason;
@@ -56,6 +61,18 @@ public class C_Job_Application extends BaseDomain implements Serializable {
 	}
 	public void setLogin_name(String login_name) {
 		this.login_name = login_name;
+	}
+	public String getJobapp_title() {
+		return jobapp_title;
+	}
+	public void setJobapp_title(String jobapp_title) {
+		this.jobapp_title = jobapp_title;
+	}
+	public String getEmailid() {
+		return emailid;
+	}
+	public void setEmailid(String emailid) {
+		this.emailid = emailid;
 	}
 	
 }

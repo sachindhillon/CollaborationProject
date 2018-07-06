@@ -182,7 +182,7 @@ public class C_JobDAOImple implements C_JobDAO {
 
 		// select * from C_Job_Application where emailID = ? and jobID = ?
 		return (C_Job_Application)getCurrentSession()
-				.createCriteria(C_Job_Application.class).add(Restrictions.eq("jobApp_email", login_name))
+				.createCriteria(C_Job_Application.class).add(Restrictions.eq("login_name", login_name))
 				.add(Restrictions.eq("job_id", jobID)).uniqueResult();
 
 	}
@@ -201,5 +201,14 @@ public class C_JobDAOImple implements C_JobDAO {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public List<C_Job_Application> applicationlist() {
+		return getCurrentSession().createQuery("from C_Job_Application").list();
+	}
+
+	public C_Job_Application getApplication(int id) {
+		// TODO Auto-generated method stub
+		return (C_Job_Application) getCurrentSession().createCriteria(C_Job_Application.class).add(Restrictions.eq("jobApp_Id",id)).uniqueResult();
 	}
 }
